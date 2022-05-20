@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Core.tscn" type="PackedScene" id=1]
+[ext_resource path="res://test.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TextureToPolygon.gd" type="Script" id=3]
+[ext_resource path="res://beachball.png" type="Texture" id=4]
+
+[node name="world_root" type="Node2D"]
+
+[node name="Core" parent="." instance=ExtResource( 1 )]
+position = Vector2( -0.175041, -0.856735 )
+
+[node name="body" parent="." instance=ExtResource( 2 )]
+position = Vector2( -102, -46 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 50, 30 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+script = ExtResource( 3 )
+tex = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D"]
+texture = ExtResource( 4 )
