@@ -19,9 +19,10 @@ current = true
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2( 50, 30 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
-script = ExtResource( 3 )
-tex = ExtResource( 4 )
-
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
 texture = ExtResource( 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+polygon = PoolVector2Array( -12, -10, -11, -11, -10, -12, -9, -13, -7, -13, -6, -14, -3, -15, -1, -15, 1, -15, 3, -15, 4, -14, 7, -13, 11, -10, 13, -7, -13, -9, -13, -7, -14, -6, -13, -3, -15, -3, -15, -1, -15, 1, -15, 3, -14, 6, -10, 11, -6, 13, -4, 13, -3, 14, -1, 14, 1, 14, 3, 14, 6, 13, 13, 5, 13, -5, 14, -3, 14, -1, 13, -6, 13, -4, 14, 1, 13, 4, 13, 6 )
+script = ExtResource( 3 )
+tex = ExtResource( 4 )
