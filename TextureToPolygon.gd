@@ -27,6 +27,31 @@ func randomWalk(x, y, image):
 		readPixel = image.get_pixelv(cursor)
 	image.unlock()
 	return Vector2(cursor.x - width/2, cursor.y - height/2)
+
+enum Kernel{UL, UC, UR, L, C, R, DL, DC, DR}
+func generate_points_3x3():
+	var image = tex.get_data()
+	var width = image.get_width()
+	var height = image.get_height()
+	var points = []
+	var kernel = {}
+	var alphaPixel = Color(0,0,0,1)
+	image.lock()
+	for x in range(0, width, 3):
+		for y in range(0, height, 3):
+			#read data into kernel
+			kernel = {
+				Kernel.UL: image.getpixel(x,y),
+				Kernel.UC: image.getpixel(x+1,y),
+				Kernel.UR: image.getpixel(x+2,y),
+				Kernel.L: image.getpixel(x,y+1),
+				Kernel.C: image.getpixel(x+1,y+1),
+				Kernel.R: image.getpixel(x+2,y+1),
+				Kernel.DL: image.getpixel(x,y+2),
+				Kernel.DC: image.getpixel(x+1,y+2),
+				Kernel.DR: image.getpixel(x+2,y+2)
+				}
+	
 func generate_points():
 	var image = tex.get_data()
 	var width = image.get_width()
